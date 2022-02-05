@@ -1,0 +1,22 @@
+import os
+
+import discord
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    print(f'{client.user.name} connected or smth')
+
+@client.event 
+async def on_message(message):
+    if 'ping' in message.content.lower():
+        await message.channel.send('pong')
+    if 'Hi' in message.content():
+        await message.channel.send('u suck ass')
+
+client.run('TOKEN')
