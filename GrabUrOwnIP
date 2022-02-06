@@ -1,0 +1,16 @@
+#Modified by Galactic
+import mechanize as browser
+url = "https://www.google.com/search?q=whats+my+ip+address&sxsrf=APq-WBtctyFQqlewAWSHzgbOCP5G7jAryw%3A1644168207536&source=hp&ei=DwQAYq2HHcq5qtsP6LKX8A4&iflsig=AHkkrS4AAAAAYgASH3TVSaiq_3YTvQWewlOAA33kYhkG&oq=whats+my+IP+&gs_lcp=Cgdnd3Mtd2l6EAEYADIFCAAQgAQyBwgAELEDEAoyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoECCMQJzoLCAAQgAQQsQMQgwE6DgguEIAEELEDEMcBEKMCOggIABCABBCxAzoRCC4QgAQQsQMQgwEQxwEQowI6CwguEIAEELEDEIMBOgUILhCABDoLCAAQgAQQsQMQyQM6BQgAEJIDOggIABCxAxCDAToICAAQgAQQyQM6BwgAEIAEEAo6CggAEIAEELEDEAo6DQgAEIAEELEDEIMBEAo6CgguEIAEELEDEApQAFiREGDeGWgAcAB4AIABaogB4geSAQQxMS4xmAEAoAEB&sclient=gws-wiz";
+br = browser.Browser();
+br.set_handle_robots(False);
+br.set_handle_refresh(browser._http.HTTPRefreshProcessor(), max_time=1);
+visit = br.open(url);
+html = visit.read();
+if("Your IP address is" in html):
+ #found an IP :p
+ html=html.split("Your IP address is")[1].strip();
+ html=html.split("in")[0].strip();
+ print "[+] Your External Ip is : %s"%html;
+else:
+ pass
+ print("Made by Galactic#6126")
